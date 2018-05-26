@@ -15,6 +15,8 @@
 
 .. toctree::
    :caption: 规范说明
+   :maxdepth: 2
+   :hidden:
 
    spec/templates
    spec/geojson
