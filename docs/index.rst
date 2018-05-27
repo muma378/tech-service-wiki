@@ -23,13 +23,13 @@
    spec/open-dataset
 
 :doc:`spec/templates`
-    数据堂常见标注模板格式指南。
+    数据堂标注模板功能及格式指南。
 
 :doc:`spec/geojson`
-    关于GeoJSON规范（RFC7946）的说明。
+    关于地理特征开放格式GeoJSON（RFC7946）的说明。
 
 :doc:`spec/open-dataset`
-    关于开源数据集MSCoCo, Pascal VOC和KITTI的介绍。
+    关于开源数据集MSCOCO, PASCAL VOC和KITTI的介绍。
 
 
 .. _section-tech:
