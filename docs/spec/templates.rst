@@ -80,7 +80,7 @@
 
 **> 交付建议**
 
-在处理这类数据时，我们建议将每段音频按照时间点切割成单句，并提供与音频名称相同的文本文件——仅包含一行转写内容（无换行符）的.txt文件。
+在处理这类数据时，我们建议将每段音频按照时间点切割成单句，并提供与音频名称相同的文本文件——仅包含一行转写内容（无换行符）的 **.txt** 文件。
 
 在文件命名上，切割后的文件按照 **原始音频名** + **_S** + **按照起始时间排序从1开始的索引，并用0左补齐** 命名，所有的切割后的文件放在以 **原始音频名（不包含后缀）** 命名的文件夹下，具体文件结构和格式如下：
 
@@ -89,33 +89,33 @@
   定制数据 ::
 
     第XXX期语音标注任务/
-        wav_name1/
-            wav_name1_S0001.wav
-            wav_name1_S0001.txt
-            ...
-        wav_name2/
-            wav_name2_S0001.wav
-            wav_name2_S0001.txt
-            ...
+      wav_name1/
+        wav_name1_S0001.wav
+        wav_name1_S0001.txt
+        ...
+      wav_name2/
+        wav_name2_S0001.wav
+        wav_name2_S0001.txt
+        ...
 
   自制数据 ::
 
     data/
-        category/
-            G0001/
-                session_Phone/
-                    Phone_G0001_S0001.wav
-                    Phone_G0001_S0001.txt
-                    Phone_G0001_S0001.metadata
-                    ...
-                session_Mic/
-                    Mic_G0001_S0001.wav
-                    Mic_G0001_S0001.txt
-                    Mic_G0001_S0001.metadata
-                    ...
-                ...
-            G0002/
+      category/
+        G0001/
+          session_Phone/
+            Phone_G0001_S0001.wav
+            Phone_G0001_S0001.txt
+            Phone_G0001_S0001.metadata
             ...
+          session_Mic/
+            Mic_G0001_S0001.wav
+            Mic_G0001_S0001.txt
+            Mic_G0001_S0001.metadata
+            ...
+          ...
+        G0002/
+        ...
 
 - 文件格式：
 
@@ -126,7 +126,7 @@
 
 **> 扩展话题**
 
-* 除了语音内容转写，这类模板也可能包含录音人或音频信息的属性标注。如果包含其他属性的标注，则需要属性名称和值行成的.json文件。关于属性名称的选择可以参考本章的 `属性命名参考列表`_ ，文件格式如下：
+* 除了语音内容转写，这类模板也可能包含录音人或音频信息的属性标注。如果包含其他属性的标注，则需要属性名称和值行成的 **.json** 文件。关于属性名称的选择可以参考本章的 `属性命名参考列表`_ ，文件格式如下：
 
   wav_name1_S0001.json ::
 
@@ -150,8 +150,14 @@
 
 **> 功能介绍**
 
-**图像线、矩形框、多边形标注v3.0** 提供了一张图片中每个标注物的坐标信息、标注物相关的属性以及标
-注物互相之间的关联关系，数据处理工程师可以使用这些坐标信息将标注框还原到图片上，生成不同类型的图像，并且知道标注物质检的关系。
+**街景矩形框、多边形v3.8** 提供了一张图片中每个标注物的坐标信息、标注物相关的属性以及标
+注物互相之间的关联关系，数据处理工程师可以使用这些坐标信息将标注框还原到图片上，生成不同类型的图像，并且知道标注物之间的关系。
+
+.. figure:: /_static/spec/templates/cityscape_template.jpg
+    :alt: 街景矩形框、多边形v3.8
+    :align: center
+
+    街景矩形框、多边形v3.8 操作界面
 
 **> 平台格式**
 
@@ -167,50 +173,26 @@
   Source ::
 
     {
-      '_personInProjectId': 0,
-      'dataTitle': 'datatang_part2_CH-1_187_1496249231589.jpg',
-      'url': 'datatang_part2_CH-1_187_1496249231589.jpg',
-      '_guid': 'ad8db6c3-73b4-413b-97cb-4476bdbfd383',
-      '_createTime': '2017/9/2210: 05: 48',
-      '_id': ObjectId('c3b68dadb4733b4197cb4476')
+      'dataTitle': 'url1.jpg',
+      'url': 'url1.jpg',
     }
 
   Result ::
 
     {
-      '_personInProjectId': 476583,
-      'workload': {
-        'roadsignCount': '0',
-        'selfqualifiedboxcount': 0,
-        'rectCount': '0',
-        'boxcount': 8,
-        'workTime': 0.9853166666666666,
-        'polygonCount': '0',
-        'selfunqualifiedboxcount': 0,
-        'unqualifiedboxcount': 0,
-        'lineCount': '8',
-        'trafficlightCount': '0',
-        'total': '8',
-        'qualifiedboxcount': 0
-      },
       'effective': 1,
-      '_guid': '11828c89-8b10-4b2a-858e-766d821be151',
-      '_createTime': '2017/9/2813: 51: 52',
       'markResult': {
       'type': 'FeatureCollection',
       'features': [{
         'geometry': {
           'type': 'LineString',
-          'coordinates': [[606.8049645037071,
-          297.8348053163902],
-          [545.8049645037071,
-          311.3348053163902],
-          [327.3049645037071,
-          356.8348053163902],
-          [161.80496450370708,
-          395.3348053163902],
-          [4.804964503707083,
-          436.3348053163902]]
+          'coordinates': [
+            [606.8049645037071, 297.8348053163902],
+            [545.8049645037071, 311.3348053163902],
+            [327.3049645037071, 356.8348053163902],
+            [161.80496450370708, 395.3348053163902],
+            [4.804964503707083, 436.3348053163902]
+          ]
         },
         'type': 'Feature',
         'properties': {
@@ -221,7 +203,7 @@
             'parentDataTitle': '白色虚线'
           },
           'quality': {
-            
+
           },
           'index': 1
         },
@@ -229,27 +211,25 @@
       }]
     }
 
+.. note:: 上述 **导出格式** 的 `Result` 格式是基于 ``GeoJSON`` （RFC7946_）修改形成的，具体细节请参考 :doc:`geojson`
+
 **> 交付建议**
 
-这类数据我们建议提供与图片名称相同的.txt文件，文件内容包含标注的坐标点信息、标注框的id和客户想要的标注物属性，并且都以json格式进行导出，同时提供对应的原始图片、mask图以及blend图。
+这类数据我们建议提供与图片名称相同的 **.json** 文件，文件内容包含标注的线/矩形/多边形的坐标点和与之相关的必要的属性，**json** 各字段的组织应尽量直接、平坦（flat），在可能的条件下，不应包含过多的嵌套。同时，提供对应的原始图、掩模图以及效果图。
 具体文件结构格式如下：
 
-- 文件结构:
-  
+- 文件结构：
+
   定制数据 ::
 
     第XXX期图片标注任务/
-        img_name1/
-            img_name1_S0001.jpg
-            img_name1_S0001.txt
-            img_name1_S0001_mask.jpg
-            img_name1_S0001_blend.jpg
+        dirname1/
+            image_name.jpg
+            image_name.json
+            image_name_mask.jpg
+            image_name_blend.jpg
             ...
-        img_name2/
-            img_name2_S0001.jpg
-            img_name2_S0001.txt
-            img_name2_S0001_mask.jpg
-            img_name2_S0001_blend.jpg
+        dirname2/
             ...
 
   自制数据 ::
@@ -259,64 +239,72 @@
             G0001/
                 session_jpg/
                     imgname_G0001_S0001.jpg
-                    imgname_G0001_S0001.txt
+                    imgname_G0001_S0001.json
                     imgname_G0001_S0001.metadata
-                    imgname_G0001_S0001_mask.jpg
-                    imgname_G0001_S0001_blend.jpg
-                    ...
-                session_png/
-                    imgname_G0001_S0001.png
-                    imgname_G0001_S0001.txt
-                    imgname_G0001_S0001.metadata
-                    imgname_G0001_S0001_mask.png
-                    imgname_G0001_S0001_blend.png
                     ...
                 ...
             G0002
             ...
 
-- 文件格式 :
-  
-  img_name1_S0001.txt ::
-      "filename": "img_name1_S0001.jpg",
-      "datalist": [{
-              
-              "arr": [{
-                  "x": 606.8049645037071,
-                  "y": 297.8348053163902
-                  },
-                  {
-                  "x": 545.8049645037071,
-                  "y": 311.3348053163902
-                  },
-                    ...
-              ],
-              "id": 1,
-              "type": "dotted line",
-              "pro1": xxxx,
-              "pro2": xxxx,
-              ...
-          {
-              ...
-          }
-          ...
-    }]
+- 文件格式：
+
+  image_name.json ::
+
+    [{
+      "label": "car",
+      "coordinates": [
+        [606.8049645037071, 297.8348053163902],
+        [545.8049645037071, 311.3348053163902],
+        [327.3049645037071, 356.8348053163902],
+        [161.80496450370708, 395.3348053163902],
+        [4.804964503707083, 436.3348053163902],
+        [606.8049645037071, 297.8348053163902]
+      ],
+      "type": "Polygon",
+      "id": 1,
+      },
+      ...
+    ]
+
+- 图片示例：
+
+.. figure:: /_static/spec/templates/cityscape.jpg
+    :alt: raw
+    :align: center
+
+    原始图
+
+.. figure:: /_static/spec/templates/cityscape_mask.jpg
+    :alt: mask
+    :align: center
+
+    掩模图
+
+.. figure:: /_static/spec/templates/cityscape_blend.jpg
+    :alt: blend
+    :align: center
+
+    效果图
+
 
 **> 扩展话题**
 
-* 这类模板也可能包括各标注物之间的关联关系，一般在导出数据中包含 **relativeAssis** 或者 **link** 这样的属性字段，里面包含其所关联的父标注物id,例如 
-  ::
+* 这类模板也可能包括各标注物之间的关联关系，一般在导出数据中包含 **relativeAssis** 或者 **link** 这样的属性字段，里面包含其所关联的父标注物id，例如 ::
+
     "link":{
         "linkId": 10,
         "linkTitle": "轿车",
         "val": "10-轿车
         }
-  表示其关联id为10的轿车，
-  ::
-    "relativaAssis": 4 
-  表示其关联id为4的标注物
 
-* 同时这类模板可能会被要求导出标注框的总数以及标注的不同类型框的数量，具体信息可以参照本章的 `属性命名参考列表`_, 但是导出结果数据可能不太准确，所以建议自己计算出数量导出,文件导出格式参照上面 **文件格式**
+表示其关联id为10的轿车，或者 ::
+
+    "relativaAssis": 4
+
+表示其与id为4的标注对象有关联。
+
+* 同时这类模板可能会被要求导出标注框的总数以及标注的不同类型框的数量，具体信息可以参照本章的 `属性命名参考列表`_, 但是导出结果数据可能不太准确，所以建议自己计算出数量导出。
+
 -----------------------------------------
 
 .. _face_keypoints:
@@ -458,3 +446,4 @@ properties ``Result``
 
 .. _数据堂标注平台: http://bz.datatang.com/
 .. _datatang-base: http://git.datatang.com/xiaoyang/datatang_base
+.. _RFC7946: https://tools.ietf.org/html/rfc7946
