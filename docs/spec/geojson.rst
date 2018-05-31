@@ -346,6 +346,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
     - Examples
   * - MultiPoint
     - .. figure:: png/51px-SFA_MultiPoint.svg.png
+         :width: 15
     - ::
 	
 	{
