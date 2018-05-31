@@ -316,7 +316,8 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		  [20, 40],[10, 20],[30, 10]]
 		]
 	}
-  * - Polygon(hole)
+  * - Polygon
+      (hole)
     - .. figure:: png/SFA_Polygon_with_hole.svg.png
     - ::
 	
@@ -337,7 +338,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 - Multipart geometries
 	
 .. list-table:: Multipart geometries
-  :widths: 10 20 30
+  :widths: 5 15 30
   :header-rows: 1
 
   * - Tpye
