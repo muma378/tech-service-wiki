@@ -321,7 +321,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		]
 	}
   * - Polygon
-       (hole)
+      (hole)
     - .. figure:: png/SFA_Polygon_with_hole.svg.png
          :width: 50
     - ::
