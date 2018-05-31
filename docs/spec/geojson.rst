@@ -283,7 +283,8 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 .. list-table:: Geometry primitives
   :widths: 5 10 30
   :header-rows: 1
-
+  :align: center
+  
   * - Tpye
     - Picture
     - Examples
@@ -340,6 +341,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 .. list-table:: Multipart geometries
   :widths: 5 15 30
   :header-rows: 1
+  :align: center
 
   * - Tpye
     - Picture
