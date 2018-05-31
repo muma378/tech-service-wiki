@@ -383,7 +383,8 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		  ]
 		]
 	}
-  * - MultiPolygon(hole)
+  * - MultiPolygon
+        (hole)
     - .. figure:: png/SFA_MultiPolygon_with_hole.svg.png
     - ::
 	
