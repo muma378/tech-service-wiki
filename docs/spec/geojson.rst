@@ -6,10 +6,10 @@ GeoJSON规范说明
 
 本文将按照以下几个方面进行介绍：
 
-	1.GeoJSON简介
+	1 GeoJSON简介
 		- 1.1 GeoJSON举例
 		- 1.2 GeoJSON定义
-	2.GeoJSON对象
+	2 GeoJSON对象
 		- 2.1 几何对象
 			- 2.1.1 位置
 			- 2.1.2 点
@@ -22,7 +22,7 @@ GeoJSON规范说明
 		- 2.2 特征对象
 		- 2.3 特征对象集合
 		- 2.4 边界框
-	3.GeoJSON表格示例
+	3 GeoJSON表格示例
 		- 3.1 单个几何图形
 		- 3.2 多个几何图形
 	
@@ -30,7 +30,7 @@ GeoJSON规范说明
 
 .. _audio-transliterate:
 
-1.GeoJSON简介
+1 GeoJSON简介
 =============
 
 GeoJSON是一种对各种地理数据结构进行编码的格式。GeoJSON对象可以表示几何、特征或者特征集合。GeoJSON支持下面几何类型：点、线、多边形、多点、多线、多边形集合和几何集合。GeoJSON里的特征包含一个几何对象和其他属性，特征集合表示一系列特征。
@@ -95,7 +95,7 @@ JavaScript对象表示和术语对象、名字、值、数组和数字都定义�
 
 .. _audio-transliterate:
 
-2.GeoJSON对象
+2 GeoJSON对象
 ===============
 
 GeoJSON总是由一个单独的对象组成。这个对象（指的是下面的GeoJSON对象）表示几何、特征或者特征集合。
@@ -275,7 +275,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 
 .. _audio-transliterate:
 
-3.GeoJSON表格示例
+3 GeoJSON表格示例
 ======================
 
 3.1 Geometry primitives
