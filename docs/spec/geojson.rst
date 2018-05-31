@@ -289,6 +289,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
     - Examples
   * - Point
     - .. figure:: png/51px-SFA_Point.svg.png
+         :width: 20
     - ::
 	
 	{
@@ -297,6 +298,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	} 
   * - LineString
     - .. figure:: png/51px-SFA_LineString.svg.png
+         :width: 20
     - ::
 	
 	{
@@ -307,6 +309,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	}
   * - Polygon
     - .. figure:: png/SFA_Polygon.svg.png
+         :width: 20
     - ::
 	
 	{
@@ -319,6 +322,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
   * - Polygon
       (hole)
     - .. figure:: png/SFA_Polygon_with_hole.svg.png
+         :width: 20
     - ::
 	
 	{
@@ -358,6 +362,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	}
   * - MultiLineString
     - .. figure:: png/51px-SFA_MultiLineString.svg.png
+         :width: 20
     - ::
 	
 	{
@@ -370,6 +375,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	}
   * - MultiPolygon
     - .. figure:: png/SFA_MultiPolygon.svg.png
+         :width: 20
     - ::
 	
 	{
@@ -388,6 +394,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
   * - MultiPolygon
         (hole)
     - .. figure:: png/SFA_MultiPolygon_with_hole.svg.png
+         :width: 20
     - ::
 	
 	{
