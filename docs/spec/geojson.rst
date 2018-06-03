@@ -262,7 +262,7 @@ GeoJSON规范说明
 3.GeoJSON Cheat Sheet
 ======================
 
-.. note: 为方便读者理解和查询，我们整合了Wiki上 ``GeoJSON`` 的介绍，以下表格来自 `GeoJSON Wiki`_ 。
+.. note:: 为方便读者理解和查询，我们整合了Wiki上 ``GeoJSON`` 的介绍，以下表格来自 `GeoJSON Wiki`_ 。
 
 3.1 Geometry 基本类型 （Geometry primitives）
 ---------------------------------------------
