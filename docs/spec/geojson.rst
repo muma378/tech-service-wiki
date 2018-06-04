@@ -16,21 +16,29 @@ GeoJSON规范说明
 数据堂使用 ``GeoJSON`` 作为图像类标注信息的表示格式。
 
 
-.. geojson_definition:
+.. _geojson_definition:
 
 1.1 GeoJSON定义
------------------
+------------------
 
-GeoJSON是一种对各种地理数据结构进行编码的格式。GeoJSON对象可以表示几何、特征或者特征集合。GeoJSON支持下面几何类型：点、线、多边形、多点、多线、多边形集合和几何集合。GeoJSON里的特征包含一个几何对象和其他属性，特征集合表示一系列特征。
+  - 对JavaScript对象表示符（JSON），以及相关术语 `object`，`member`，
+    `name`，`value`，`array`，`number`，`true` ，`false` 和 `null`
+    的解释与在[ RFC7159_ ]中的定义相同。
 
-一个完整的GeoJSON数据结构总是一个（JSON术语里的）对象。在GeoJSON里，对象由键/值对，也称作成员的集合组成。对每个成员来说，名字总是字符串。成员的值要么是字符串、数字、对象、数组，要么是下面文本常量中的一个：”true"，"false"和"null"。数组是由值是上面所说的元素组成。
-我们常用到的类型包括：点（Point）、线（LineString）、多边形（Polygon）、多点（MultiPoint）、多线（MultiLineString）和多边形集合（MultiPolygon）。
+  - 在这篇文档中，术语 ``geometry type`` 指代七种（大小写敏感）的字符串：
+    `Point`，`MultiPoint`，`LineString`，`MultiLineString`，`Polygon`，
+    `MultiPolygon` 和 `GeometryCollection`。
 
-JavaScript对象表示和术语对象、名字、值、数组和数字都定义在IETF RFC4627_ 里。
+  - 术语 ``GeoJSON types`` 作为另一种缩写标识符，指代九种（大小写敏感）的字符串：
+    `Feature`，`FeatureCollection`，以及上述列出的所有geometry types。
+
+  - 需要注意的是，`FeatureCollection` 和 `GeometryCollection` 中的词语 **Collection**
+    对于数组的成员（array members）在语义上没有任何特殊的含义。它们的成员 `features`
+    和 `geometries` ，是标准的有序JSON数组，而非无序集合。
 
 
 1.2 GeoJSON举例
------------------
+------------------
 
 ::
 
@@ -83,78 +91,66 @@ JavaScript对象表示和术语对象、名字、值、数组和数字都定义�
 
 .. _geojson_object:
 
-2.GeoJSON对象
-===============
+2.GeoJSON对象（GeoJSON object）
+=================================
 
-GeoJSON总是由一个单独的对象组成。这个对象（指的是下面的GeoJSON对象）表示几何、特征或者特征集合。
+一个 ``GeoJSON object`` 代表一个几何（Geometry），特征（Feature）或者是特征的集合。
 
-GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字为 **type** 的成员。这个成员的值是由GeoJSON对象的类型所确定的字符串。type成员的值必须是下面之一：
-    - **Point**
-    - **MultiPoint**
-    - **LineString**
-    - **MultiLineString**
-    - **Polygon**
-    - **MultiPolygon**
-    - **GeometryCollection**
-    - **Feature**
-    - **FeatureCollection**
+  - 每个GeoJSON对象都是一个JSON对象；
+
+  - 每个GeoJSON对象都有一个名称为 **type** 的成员，它的值 **必须** 是 ``GeoJSON types``
+    中的一个；
+
+  - 一个GeoJSON对象 **可能** 会有一个名称为 **bbox** 的成员，它的值 **必须** 是一个
+    边界框数组（bounding box array，详见 :ref:`bounding_box` ）；
+
+  - 一个GeoJSON对象也 **可能** 有其他成员。
 
 
 .. _geometry_object:
 
 2.1 几何对象(Geometry Object)
-------------------------------
+---------------------------------
 
-一个几何对象表示点、曲线和坐标空间中的面。
+一个Geometry对象表示坐标空间中的点（points）、曲线（curve）和面（surfaces）。
 
-几何对象的type成员的值是下面字符串之一：**Point** 、 **MultiPoint** 、 **LineString** 、 **MultiLineString** 、 **Polygon** 、 **MultiPolygon** 或者 **GeometryCollection** 。
+  - Geometry对象的 `type` 成员的值 **必须** 是 :ref:`geojson_definition` 提到的七种之一；
 
-除了 **GeometryCollection** 外的其他任何类型的 **GeoJSON几何对象** 必须有一个名字为 **coordinates** 的成员。
-
-**coordinates** 成员的值总是数组，这个数组里的元素的结构由几何类型来确定。
+  - Geometry对象中，除了 **GeometryCollection** 外的其他任何类型 **必须**
+    有一个名字为 **coordinates** 的成员。 `coordinates` 成员的值总是数组，
+    这个数组里的元素的结构由几何类型来确定。GeoJSON可能会将一个空的 `coordinates`
+    数组解释成 `null` 对象。
 
 - 2.1.1 位置(Position)
 
-    .. todo: rewrite
+    位置是基本的几何结构。Geometry对象的 **coordinates** 成员可以由以下组成：
 
-    位置是基本的几何结构。几何对象的 **coordinates** 成员由一个位置（这儿是几何点）、位置数组（线或者几何多点），位置数组的数组（面、多线）或者位置的多维数组（多面）组成。
+    - 当几何图形是点（`Point`）时，是一个 ``Position`` 元素;
 
-    位置由数字数组表示。必须至少两个元素，可以有更多元素。元素的顺序必须遵从 **x，y，z** 顺序（投影坐标参考系统中坐标的东向、北向、高度或者地理坐标参考系统中的坐标长度、纬度、高度）。任何数目的其他元素是允许的---其他元素的说明和意义超出了这篇规格说明的范围。
+    - 当几何图形是线（`LineString`） 或多点（`MultiPoint`）时，是 ``Position`` 数组；
+
+    - 当几何图形是多边形（`Polygon`）或多线时（`MultiLineString`）时，是 ``LineString`` 数组或线性环（linear ring）坐标；
+
+    - 当几何图形是多多边形（`MultiPolygon`）时，是 ``Polygon`` 坐标数组；
+
+    位置由数字数组表示，**必须** 至少包含两个元素。元素的顺序必须遵从 **x, y (, z)** 顺序（按照投影坐标参考系统中坐标的东向、北向、高度，或者地理坐标参考系统中的坐标长度、纬度、高度）。任何数目的其他元素是允许的——其他元素的说明和意义超出了这篇规格说明的范围。
 
 
 - 2.1.2 点(Point)
 
-    对类型 **Point** 来说， **coordinates** 成员必须是一个单独的位置。例如： ::
-
-      { "type": "Point", "coordinates": [100.0, 0.0] }
-
+    对类型 **Point** 来说， **coordinates** 成员必须是一个单独的位置。
 
 - 2.1.3 多点(MultiPoint)
 
-    对类型 **MultiPoint** 来说， **coordinates** 成员必须是位置数组。例如： ::
-
-    	{ "type": "MultiPoint",
-    	  "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
-    	}
+    对类型 **MultiPoint** 来说， **coordinates** 成员必须是位置数组。
 
 - 2.1.4 线(LineString)
 
-    对类型 **LineString** 来说， **coordinates** 成员必须是两个或者多个位置的数组。例如： ::
-
-      { "type": "LineString",
-        "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
-      }
+    对类型 **LineString** 来说， **coordinates** 成员必须是两个或者多个位置的数组。
 
 - 2.1.5 多线（MultiLineString）
 
-    对类型“MultiLineString"来说，"coordinates"成员必须是一个线坐标数组的数组。例如： ::
-
-      { "type": "MultiLineString",
-        "coordinates": [
-          [ [100.0, 0.0], [101.0, 1.0] ],
-          [ [102.0, 2.0], [103.0, 3.0] ]
-          ]
-      }
+    对类型“MultiLineString"来说，"coordinates"成员必须是一个线坐标数组的数组。
 
 - 2.1.6 多边形（Polygon）
 
@@ -189,15 +185,8 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 
 - 2.1.7 多边形集合（MultiPolygon）
 
-    对类型"MultiPlygon"来说，"coordinates"成员必须是面坐标数组的数组。例如： ::
+    对类型"MultiPlygon"来说，"coordinates"成员必须是多边形坐标数组的数组。
 
-        { "type": "MultiPolygon",
-          "coordinates": [
-                [[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]],
-                [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
-                [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
-            ]
-        }
 
 - 2.1.8 几何集合（GeometryCollection）
 
@@ -219,43 +208,52 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 .. _feature_object:
 
 2.2 特征对象(Feature Object)
+-----------------------------
 
-类型为"Feature"的GeoJSON对象是特征对象。特征对象必须由一个名字为"geometry"的成员，这个几何成员的值是上面定义的几何对象或者JSON的null值。特征对象那个必须有一个名字为“properties"的成员，这个属性成员的值是一个对象（任何JSON对象或者null值）。如果特征是常用的标识符，那么这个标识符应当包含名字为“id”的特征对象成员。
+    类型为 **Feature** 的GeoJSON对象是特征对象。
 
-- 示例见2.4边界框的示例。
+    - 特征对象必须由一个名字为 `geometry` 的成员，这个几何成员的值是上面定义的几何对象或者JSON的null值。
+
+    - 特征对象那个必须有一个名字为 `properties` 的成员，这个属性成员的值是一个对象（任何JSON对象或者null值）。如果特征是常用的标识符，那么这个标识符应当包含名字为 `id` 的特征对象成员。
+
+.. _feature_collection_object:
 
 2.3 特征对象集合(FeatureCollection Object)
+-----------------------------------------------
 
-类型为"FeatureCollection"的GeoJSON对象是特征集合对象。特征集合对象必须由一个名字为"features"的成员。与“features"相对应的值是一个数组。这个数组中的每个元素都是上面定义的特征对象。
+    类型为 **FeatureCollection** 的GeoJSON对象是特征集合对象。
 
-- 示例见2.4边界框的示例。
+    - 特征集合对象必须由一个名字为 `features` 的成员。与 `features` 相对应的值是一个数组。这个数组中的每个元素都是上面定义的特征对象。
+
+.. _bounding_box:
 
 2.4 边界框(Bounding Box)
+-----------------------------
 
-为了包含几何、特征或者特征集合的坐标范围信息，GeoJSON对象可能有一个名字为"bbox的成员。bbox成员的值必须是2*n数组，这儿n是所包含几何对象的维数，并且所有坐标轴的最低值后面跟着最高者值。bbox的坐标轴的顺序遵循几何坐标轴的顺序。除此之外，bbox的坐标参考系统假设匹配它所在GeoJSON对象的坐标参考系统。
+    为了包含几何、特征或者特征集合的坐标范围信息，GeoJSON对象可能有一个名字为 **bbox** 的成员。``bbox`` 成员的值必须是2*n数组，这里n是所包含几何对象的维数，并且所有坐标轴的最低值后面跟着最高者值。``bbox`` 的坐标轴的顺序遵循几何坐标轴的顺序。除此之外，``bbox`` 的坐标参考系统假设匹配它所在GeoJSON对象的坐标参考系统。
 
-- 特征对象上的bbox成员的例子：
-::
+    - 特征对象上的bbox成员的例子： ::
 
-    { "type": "Feature",
-      "bbox": [-180.0, -90.0, 180.0, 90.0],
-      "geometry": {
-		  "type": "Polygon",
-		  "coordinates": [[
-			    [-180.0, 10.0], [20.0, 90.0], [180.0, -5.0], [-30.0, -90.0]
-			]]
-		}
-      ...
-    }
-- 特征集合对象bbox成员的例子：
-::
+        { "type": "Feature",
+          "bbox": [-180.0, -90.0, 180.0, 90.0],
+          "geometry": {
+              "type": "Polygon",
+              "coordinates": [[
+                    [-180.0, 10.0], [20.0, 90.0],
+                    [180.0, -5.0], [-30.0, -90.0]
+                ]]
+            }
+          ...
+        }
 
-    { "type": "FeatureCollection",
-      "bbox": [100.0, 0.0, 105.0, 1.0],
-      "features": [
-            ...
-        ]
-    }
+    - 特征集合对象bbox成员的例子： ::
+
+        { "type": "FeatureCollection",
+          "bbox": [100.0, 0.0, 105.0, 1.0],
+          "features": [
+                ...
+            ]
+        }
 
 -----------------------------------------
 
@@ -264,12 +262,10 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 3.GeoJSON Cheat Sheet
 ======================
 
-.. note: 为方便读者理解和查询，我们整合了Wiki上 ``GeoJSON`` 的介绍，以下表格来自 `GeoJSON Wiki`_ 。
-
-.. _geometry_primitives:
+.. note:: 为方便读者理解和查询，我们整合了Wiki上 ``GeoJSON`` 的介绍，以下表格来自 `GeoJSON Wiki`_ 。
 
 3.1 Geometry 基本类型 （Geometry primitives）
-------------------------------
+---------------------------------------------
 
 .. list-table::
   :widths: 5 10 30
@@ -332,7 +328,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 .. _multipart_geometries:
 
 3.2 Geometry 组合（Multipart geometries）
-------------------------------
+--------------------------------------------
 
 .. list-table::
   :widths: 5 15 30
@@ -403,6 +399,8 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		]
 	}
 
+
 .. _RFC4627: http://www.ietf.org/rfc/rfc4627.txt
+.. _RFC7159: https://tools.ietf.org/html/rfc7159
 .. _GeoJSON RFC7946: https://tools.ietf.org/html/rfc7946
 .. _GeoJSON Wiki: https://en.wikipedia.org/wiki/GeoJSON
