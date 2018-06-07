@@ -153,7 +153,7 @@
 **街景矩形框、多边形v3.8** 提供了一张图片中每个标注物的坐标信息、标注物相关的属性以及标
 注物互相之间的关联关系，数据处理工程师可以使用这些坐标信息将标注框还原到图片上，生成不同类型的图像，并且知道标注物之间的关系。
 
-.. figure:: /_static/spec/templates/cityscape_template.jpg
+.. figure:: /_static/spec/templates/cityscape_template.png
     :alt: 街景矩形框、多边形v3.8
     :align: center
 
@@ -194,7 +194,6 @@
             [4.804964503707083, 436.3348053163902]
           ]
         },
-        'type': 'Feature',
         'properties': {
           'type': {
             'parentDataKey': 'whitedashed',
