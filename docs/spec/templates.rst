@@ -184,6 +184,7 @@
       'markResult': {
       'type': 'FeatureCollection',
       'features': [{
+        'type': 'Feature',
         'geometry': {
           'type': 'LineString',
           'coordinates': [
