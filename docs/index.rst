@@ -32,6 +32,20 @@
     关于开源数据集MSCOCO, PASCAL VOC和KITTI的介绍。
 
 
+.. _section-practice
+
+项目经验梳理
+====================
+
+.. toctree::
+   :caption: 数据处理相关技术
+   :hidden:
+
+    practice/azure-best-practice
+
+:doc:`practice/azure-best-practice`
+    Azure Blob使用最佳实践
+
 .. _section-tech:
 
 数据处理相关技术
