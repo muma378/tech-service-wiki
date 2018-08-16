@@ -23,3 +23,8 @@
 ```
 
 会在当前目录中生成一个名字是build的文件夹，在浏览器中打开 docs/\_build/html/index.html 。
+
+
+## 浏览
+
+所有文档以在http://tech-service-wiki.readthedocs.io/可以访问！
