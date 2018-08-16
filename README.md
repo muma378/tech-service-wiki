@@ -27,4 +27,4 @@
 
 ## 浏览
 
-所有文档以在http://tech-service-wiki.readthedocs.io/可以访问！
+所有文档已在[tech-service-wiki](http://tech-service-wiki.readthedocs.io/) 可以访问！
