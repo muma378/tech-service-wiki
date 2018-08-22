@@ -28,4 +28,4 @@
 
 -示例如下：
 
-  figure:: png/properties.png
+.. figure:: png/properties.png
