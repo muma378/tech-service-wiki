@@ -7,24 +7,24 @@ GeoJSON规范说明
 本文将按照以下几个方面进行介绍：
 
 	1.GeoJSON简介
-		- 1.GeoJSON举例
-		- 2.GeoJSON定义
+		- 1.1 GeoJSON举例
+		- 1.2 GeoJSON定义
 	2.GeoJSON对象
-		- 1.几何对象
-			- 1.位置
-			- 2.点
-			- 3.多个点
-			- 4.线
-			- 5.多个线
-			- 6.多边形
-			- 7.多个多边形
-			- 8.几何集合
-		- 2.特征对象
-		- 3.特征对象集合
-		- 4.边界框
+		- 2.1 几何对象
+			- 2.1.1 位置
+			- 2.1.2 点
+			- 2.1.3 多个点
+			- 2.1.4 线
+			- 2.1.5 多个线
+			- 2.1.6 多边形
+			- 2.1.7 多个多边形
+			- 2.1.8 几何集合
+		- 2.2 特征对象
+		- 2.3 特征对象集合
+		- 2.4 边界框
 	3.GeoJSON表格示例
-		- 1.单个几何图形
-		- 2.多个几何图形
+		- 3.1 单个几何图形
+		- 3.2 多个几何图形
 	
 -----------------------------------------
 
@@ -281,15 +281,15 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 - Geometry primitives
 
 .. list-table:: Geometry primitives
-  :widths: 5 10 40
+  :widths: 5 10 30
   :header-rows: 1
-  :align: center
 
   * - Tpye
     - Picture
     - Examples
   * - Point
     - .. figure:: png/51px-SFA_Point.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -298,6 +298,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	} 
   * - LineString
     - .. figure:: png/51px-SFA_LineString.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -308,6 +309,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	}
   * - Polygon
     - .. figure:: png/SFA_Polygon.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -317,8 +319,10 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		  [20, 40],[10, 20],[30, 10]]
 		]
 	}
-  * - Polygon(hole)
+  * - Polygon
+      (hole)
     - .. figure:: png/SFA_Polygon_with_hole.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -338,15 +342,15 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 - Multipart geometries
 	
 .. list-table:: Multipart geometries
-  :widths: 10 20 40
+  :widths: 5 15 30
   :header-rows: 1
-  :align: center
 
   * - Tpye
     - Picture
     - Examples
   * - MultiPoint
     - .. figure:: png/51px-SFA_MultiPoint.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -358,6 +362,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	}
   * - MultiLineString
     - .. figure:: png/51px-SFA_MultiLineString.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -370,6 +375,7 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 	}
   * - MultiPolygon
     - .. figure:: png/SFA_MultiPolygon.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -385,8 +391,10 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		  ]
 		]
 	}
-  * - MultiPolygon(hole)
+  * - MultiPolygon
+        (hole)
     - .. figure:: png/SFA_MultiPolygon_with_hole.svg.png
+	     :width: 60
     - ::
 	
 	{
@@ -402,18 +410,3 @@ GeoJSON对象可能有任何数目成员（键/值对），必须由一个名字
 		  ]
 		]
 	}
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
