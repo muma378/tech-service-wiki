@@ -28,6 +28,9 @@
 :doc:`spec/geojson`
     关于地理特征开放格式GeoJSON（RFC7946）的说明。
 
+:doc:`spec/incise-video`
+    关于线下视频打点软件的使用说明和规范
+
 :doc:`spec/open-dataset`
     关于开源数据集MSCOCO, PASCAL VOC和KITTI的介绍。
 
