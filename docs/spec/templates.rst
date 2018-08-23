@@ -138,6 +138,96 @@
 
 *
 
+多国语音标注模板V1.0
+-------------------------
+
+**> 功能介绍**
+
+**多国语音标注模板V1.0** 是针对于采集转标注语音任务的一个比较完善的模板，它提供了之后进行自有数据入库所需要的说话人信息，原始语料文本，有效音频起止时间，标注后矫正文本以及音频时长信息，数据处理人员可以根据这些信息来对数据进行入库处理和导出操作。
+
+**> 平台格式**
+
+- 具体实现：
+
+  采集转标注主要原理是将采集的数据**（acquisition表）**作为原始数据插入到原始数据表**（DataSource表）**中，我们需要从**acquisition表**中查到我们需要的字段，通过sql语句将这些数据插入到**DataSource表**中，当然在插入数据之前需要对采集数据进行一系列的验证工作，避免出现插错数据的情况，目前也正在做采集转标注的自动化接口，接口还在测试中，后续会更新。
+  同时对于我们内部APP采集的数据每一个号段我们都会有一个对应人的信息文件，文件名为**xxxinfo.txt**,这个文件包含了录音人以及其使用的设备，所处的环境等信息，具体内容如下所示：::
+
+    {
+    "name": "周某某",
+    "age": "24",
+    "idcard": "08066695335",
+    "local_accent": "北方地区",
+    "city": "辽宁省锦州市",
+    "sex": "女",
+    "version": "2.3",
+    "MobileType": "vivo X9s",
+    "imei": "866352035390911",
+    "gps": "116.353688,40.002153"
+    }
+
+  当然，如果是采集转标注的数据，这个文件的信息也会在我们这个标注模板中包含。
+
+- 导出格式：
+
+  Source ::
+
+    {}
+
+  由于是采集转标注，没有上传索引且没有往MongoDB中插入任何数据，所以值为空
+
+  Result ::
+
+    {
+    "hdTimeEnd": 5.6,
+    "hdTimeStart": 0,
+    "Content": "O comboio sai às vinte e três e trinta em ponto.",
+    "Effective": "1",
+    "duration": "5.60000",
+    "userinfo": {
+      "name": "Audrey Siqueira",
+      "age": "28",
+      "idcard": "FR045656",
+      "local_accent": "Southeast area",
+      "native_place": "Sao Paulo",
+      "city": "Beijing",
+      "recording_environment": "Quiet",
+      "sex": "Male",
+      "version": "2.3.1",
+      "MobileType": "MHA-AL00",
+      "imei": "866229036613964",
+      "gps": ""
+    },
+    "defaultCont": "O comboio sai às 23.30 em ponto.",
+    "Workload": {
+      "effectiveDuration": 5.6,
+      "invalidDuration": 0,
+      "taginvalidDuration": 0,
+      "workTime": 9.5551333333333339
+    },
+    "title": "T0503G0016S0193.wav",
+    "_personInProjectId": 578441,
+    "_createTime": "2018/7/2 16:45:56",
+    "_guid": "f208ac7b-945e-44b5-83a0-299c921c5b0e"
+    }
+
+
+
+**> 交付建议**
+
+在处理这类数据时，我们建议交付每段音频以及并提供与音频名称相同的文本文件——仅包含一行标注音频内容（无换行符）的 **.txt** 文件。所有文件放在一个目录下方。
+
+- 文件结构：
+
+  同 多段落语音标注v2.1.1_ 
+
+- 文件格式：
+
+  同 多段落语音标注v2.1.1_ 
+
+
+**> 扩展话题**
+
+
 -----------------------------------------
 
 .. _cityscape_images:
